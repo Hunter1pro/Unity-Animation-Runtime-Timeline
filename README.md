@@ -13,4 +13,5 @@ Has OpenSource TransformGizmo Runtime with fix for URP/HDRP
 Has Camera controll with mouse and hot kets and character spawn functional to different place
 Used OpenSource UniTask to control animation updates witch Extend Player Update Loop without mono behaviors
 
+What can be done with this plugin (without UnityEditor Dependency)
 https://youtu.be/KY64WoJzCXc
