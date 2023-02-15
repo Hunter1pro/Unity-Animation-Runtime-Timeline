@@ -1,4 +1,4 @@
-# ThirdPerson
+# Unity Animation Runtime Timeline 
 
 The package has dependencies by UniTask and AnimationRigging (can be switched to Unity 2d Aninamtion(IK) Package) or FinalIk or you custom
 its uses Unity 2021 LTS version
