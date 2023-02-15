@@ -82,6 +82,8 @@ public class AnimationController : MonoBehaviour, IAnimationController
 
         var weaponAction = AnimDriver.GetWeaponActionData(weaponGuid);
 
+        _animationStates.Clear();
+
         foreach (AnimType animType in Enum.GetValues(typeof(AnimType)))
         {
             if (weaponAction.ActionsContainer.Values.ToList().Exists(x => x.AnimType == animType))
@@ -109,6 +111,11 @@ public class AnimationController : MonoBehaviour, IAnimationController
     public void Play(AnimType animType)
     {
         _animationStates[animType].Play();
+    }
+
+    private void OnDestroy()
+    {
+        _animationStates.Values.ToList().ForEach(x => x.Stop());
     }
 }
 

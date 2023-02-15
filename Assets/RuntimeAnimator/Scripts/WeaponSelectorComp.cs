@@ -125,7 +125,7 @@ public class WeaponSelectorComp : IWeaponSelectorComp
 
         foreach(IWeaponView wSelector in this.weaponSelectors)
         {
-            wSelector.Init(weaponRootPoints.FirstOrDefault(x => x.RootName == wSelector.HandRoot), weaponRootPoints.FirstOrDefault(x => x.RootName == wSelector.SlotRoot));
+            wSelector.Init(weaponRootPoints.First(x => x.RootName == wSelector.HandRoot), weaponRootPoints.First(x => x.RootName == wSelector.SlotRoot));
             weaponContainer.Add(wSelector.GuidString, wSelector.Show);
         }
     }
@@ -169,7 +169,7 @@ public class WeaponSelectorComp : IWeaponSelectorComp
 
     public IWeaponView GetWeaponSelector(string weaponGuid)
     {
-        return weaponSelectors.FirstOrDefault(x => x.GuidString == weaponGuid);
+        return weaponSelectors.First(x => x.GuidString == weaponGuid);
     }
 }
 
