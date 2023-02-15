@@ -16,13 +16,16 @@ public class AnimationState : Updatable
     private Action<float2> _speed;
     private float _time;
 
+    private bool _circle;
+
     private bool _rootMoution;
 
-    public AnimationState(IAnimRuntimeDriver runtimeDriver, AnimType animType, string weaponGuid, WeaponActionsData coreAction = null)
+    public AnimationState(IAnimRuntimeDriver runtimeDriver, AnimType animType, string weaponGuid, bool circle = true, WeaponActionsData coreAction = null)
     {
         _runtimeDriver = runtimeDriver;
         _rigView = _runtimeDriver.GetAnimType(animType);
         _coreAction = coreAction;
+        _circle = circle;
 
         _weaponAction = _runtimeDriver.GetWeaponActionData(weaponGuid);
         _animAction = CheckExsist(animType, _weaponAction, _coreAction);
@@ -48,22 +51,18 @@ public class AnimationState : Updatable
     {
         IsRunning = true;
         _finish = null;
-        _time = 0;
     }
 
     public void Play(Action finish)
     {
         IsRunning = true;
         _finish = finish;
-        _time = 0;
     }
 
     public void PlayRootMotion(Action finish, Action<float2> speed)
     {
         IsRunning = true;
         _finish = finish;
-        _time = 0;
-        
     }
 
     public void Stop()
@@ -79,7 +78,6 @@ public class AnimationState : Updatable
         IsRunning = false;
         _time = 0;
     }
-
 
     public override void Update()
     {
@@ -99,6 +97,9 @@ public class AnimationState : Updatable
             {
                 IsRunning = false;
                 _finish?.Invoke();
+
+                if (_circle)
+                    _time = 0;
             }
         }
         else
@@ -113,6 +114,9 @@ public class AnimationState : Updatable
             {
                 IsRunning = false;
                 _finish?.Invoke();
+
+                if (_circle)
+                    _time = 0;
             }
         }
 

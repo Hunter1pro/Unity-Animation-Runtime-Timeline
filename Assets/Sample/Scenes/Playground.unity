@@ -636,6 +636,11 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8944336655422409496, guid: f6d148d888ffbf54b9afe9936dfaec1f,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 823
+      objectReference: {fileID: 0}
     - target: {fileID: 8944336655422409498, guid: f6d148d888ffbf54b9afe9936dfaec1f,
         type: 3}
       propertyPath: m_Name
@@ -844,6 +849,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnimRuntimeController
       objectReference: {fileID: 0}
+    - target: {fileID: 5622556267313096155, guid: 6352ffef18806954d9db8967b0e8c1dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5622556268385993777, guid: 6352ffef18806954d9db8967b0e8c1dc,
         type: 3}
       propertyPath: database
@@ -858,14 +868,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 601339300, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
-      propertyPath: animTypeRigViews.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 601339300, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
-      propertyPath: animTypeRigViews.Array.data[1].animType
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_RootOrder

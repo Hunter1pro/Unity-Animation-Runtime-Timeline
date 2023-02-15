@@ -172,6 +172,8 @@ public class TimeLine : MonoBehaviour
 
         this.playBtn.onClick.AddListener(() =>
         {
+            currentAnimData = null;
+
             _sourceHandle.ResetHandle();
 
             _sourceHandle.Slider.value = 0;

@@ -95,24 +95,29 @@ public class WeaponController : MonoBehaviour, IWeaponSetup
     [SerializeField]
     private List<WeaponRootPoint> weaponRootPoints;
 
+    [SerializeField]
+    private WeaponContext _weaponContext;
+
     private IAnimationController animationController;
 
     private Action<string> a_WeaponType;
 
     private IWeaponView currentWeaponData;
 
+    private void Start()
+    {
+        Init(_weaponContext.WeaponViews);
+    }
+
     public void Init(List<WeaponView> weaponViews)
     {
         animationController = GetComponent<IAnimationController>();
 
-        weaponSelectorComp = new WeaponSelectorComp(weaponViews.Where(x => x.GuidString == startWeaponType.CurrentWeapon().ToString()).ToList(), weaponRootPoints);
-
-        Init();
+        weaponSelectorComp = new WeaponSelectorComp(weaponViews, weaponRootPoints);
     }
 
     public void Reinit()
     {
-        Init();
     }
 
     public void SetupEditorWeaponType(string waeponGuid)
