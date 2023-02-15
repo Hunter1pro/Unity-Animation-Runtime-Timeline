@@ -14,4 +14,4 @@ Has Camera controll with mouse and hot kets and character spawn functional to di
 Used OpenSource UniTask to control animation updates witch Extend Player Update Loop without mono behaviors
 
 What can be done with this plugin (without UnityEditor Dependency)
-https://youtu.be/KY64WoJzCXc
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KY64WoJzCXc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
