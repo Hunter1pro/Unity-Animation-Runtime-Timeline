@@ -24,6 +24,9 @@ public class AnimAvatar
     {
         this.initedObj = GameObject.Instantiate(avatar, root.position, Quaternion.identity, root);
         this.initedObj.GetComponent<AnimationController>().Init();
+        var weaponController = this.initedObj.GetComponent<WeaponController>();
+        weaponController.Initialize();
+        weaponController.InitEditorWeaponType();
         this.animDriver = initedObj.GetComponentInChildren<IAnimRuntimeDriver>();
         //this.inputController = initedObj.GetComponent<InputController>();
     }

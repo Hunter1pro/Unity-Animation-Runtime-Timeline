@@ -62,6 +62,17 @@ public class TimeLine : MonoBehaviour
 
     public void Init(IAnimRuntimeDriver animDriver)
     {
+        _sourceHandle.ClearSubscribes();
+        this.animInput.onValueChanged.RemoveAllListeners();
+        this.addKeyBtn.onClick.RemoveAllListeners();
+        this.fixBtn.onClick.RemoveAllListeners();
+        this.removeKeyBtn.onClick.RemoveAllListeners();
+        _sourceHandle.Slider.onValueChanged.RemoveAllListeners();
+        this.updateBtn.onClick.RemoveAllListeners();
+        this.playBtn.onClick.RemoveAllListeners();
+        this.stopBtn.onClick.RemoveAllListeners();
+        this.circleBtn.onClick.RemoveAllListeners();
+
         _sourceHandle.SubscribePointerDown(() =>
         {
             _sourceHandle.ResetHandle(); 
