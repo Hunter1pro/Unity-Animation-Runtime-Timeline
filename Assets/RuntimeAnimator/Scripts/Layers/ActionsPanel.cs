@@ -92,6 +92,13 @@ public class ActionsPanel : MonoBehaviour
         this.animIndexFromDropDown.Clear();
         this.animTypeDropdown.options.Clear();
         this.animTypeDropdown.onValueChanged.RemoveAllListeners();
+        this.animListDropdown.onValueChanged.RemoveAllListeners();
+
+        this.createBtn.onClick.RemoveAllListeners();
+        this.copyBtn.onClick.RemoveAllListeners();
+        this.pasteBtn.onClick.RemoveAllListeners();
+        this.nameBtn.onClick.RemoveAllListeners();
+        this.removeBtn.onClick.RemoveAllListeners();
 
         this.animDriver = animDriver;
 

@@ -104,13 +104,18 @@ public class WeaponController : MonoBehaviour, IWeaponSetup
 
     private IWeaponView currentWeaponData;
 
-    private void Start()
+    private bool _inited;
+
+    public void Initialize()
     {
         Init(_weaponContext.WeaponViews);
     }
 
-    public void Init(List<WeaponView> weaponViews)
+    private void Init(List<WeaponView> weaponViews)
     {
+        if (_inited) return;
+        _inited = true;
+
         animationController = GetComponent<IAnimationController>();
 
         weaponSelectorComp = new WeaponSelectorComp(weaponViews, weaponRootPoints);
@@ -125,7 +130,7 @@ public class WeaponController : MonoBehaviour, IWeaponSetup
         this.SetupWeaponType(waeponGuid);
     }
 
-    private void Init()
+    public void InitEditorWeaponType()
     {
         SetupWeaponType(startWeaponType.CurrentWeapon());
     }

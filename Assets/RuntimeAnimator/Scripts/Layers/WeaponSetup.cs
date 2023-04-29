@@ -92,6 +92,14 @@ public class WeaponSetup : MonoBehaviour
 
     private void Init()
     {
+        this.weaponBtn.onClick.RemoveAllListeners();
+        this.weaponAnimDropdown.onValueChanged.RemoveAllListeners();
+        this.weaponTypeDropdown.onValueChanged.RemoveAllListeners();
+        this.saveBtn.onClick.RemoveAllListeners();
+        this.dublicateBtn.onClick.RemoveAllListeners();
+        this.removeBtn.onClick.RemoveAllListeners();
+        this.nameBtn.onClick.RemoveAllListeners();
+
         this.weaponActions = this.animDriver.WeaponActions();
 
         if (this.weaponActions.Count > 0)
@@ -208,7 +216,7 @@ public class WeaponSetup : MonoBehaviour
         weaponDropdown = new CustomDropDown<string>(weaponTypeDropdown, chousenValue =>
         {
             this.currentWeaoponData.Value.WeaponGuid = chousenValue;
-
+            
             this.weaponController.SetupEditorWeaponType(chousenValue);
         }, weaponContext.WeaponViews.First().GuidString);
 

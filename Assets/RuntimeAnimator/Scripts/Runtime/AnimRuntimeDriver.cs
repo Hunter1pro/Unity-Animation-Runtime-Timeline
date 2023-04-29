@@ -41,7 +41,7 @@ public class AnimRuntimeDriver : MonoBehaviour, IAnimRuntimeDriver
 
         if (Application.isEditor)
         {
-            this.path = Application.dataPath + "../../../SaveData/";
+            this.path = Application.dataPath + "../../SaveData/";
         }
         else
         {

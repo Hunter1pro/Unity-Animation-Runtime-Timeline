@@ -29,6 +29,11 @@ public class SourceHandle : MonoBehaviour, IPointerDownHandler
         OnPointerDown -= action;
     }
 
+    public void ClearSubscribes()
+    {
+        OnPointerDown = null;
+    }
+
     public void ResetHandle()
     {
         _slider.handleRect = _rectTransform;
