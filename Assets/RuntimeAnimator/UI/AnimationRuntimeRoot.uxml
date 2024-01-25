@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Root" style="flex-grow: 1; flex-shrink: 1; position: absolute; justify-content: flex-start; align-self: stretch; top: auto; bottom: 0; right: 0; left: 0;">
+        <ui:VisualElement name="Timeline" style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>
