@@ -87,7 +87,7 @@ public class AnimRuntimeController : MonoBehaviour
             {
                 x.Init(this.initRoot);
 
-                this.Setup(x.animDriver, x.InitedObj.GetComponent<WeaponController>(), database);
+                this.Setup(x.animDriver, x.InitedObj.GetComponent<WeaponController>(), x.InitedObj.GetComponent<IControlByAnimationSystem>(), database);
                 this.uiController.Init(x.InitedObj.transform/*, x.inputController*/);
                 this.uiController.AnimSetupPanel.ForEach(x => x.gameObject.SetActive(true));
                 this.avatarPanel.SetActive(false);
@@ -121,10 +121,15 @@ public class AnimRuntimeController : MonoBehaviour
         }
     }
 
-    private async void Setup(IAnimRuntimeDriver animDriver, WeaponController weaponController, WeaponContext weaponContext)
+    private async void Setup(IAnimRuntimeDriver animDriver, WeaponController weaponController, IControlByAnimationSystem controlByAnimationSystem, WeaponContext weaponContext)
     {
         // Wait one frame for init Unity UI
         await Task.Delay(TimeSpan.FromSeconds(0.1f));
+
+        if (controlByAnimationSystem != null)
+        {
+            controlByAnimationSystem.SetControlByAnimationSystem(true);
+        }
 
         this.timeLine.Init(animDriver);
         this.animType.Init(animDriver);
