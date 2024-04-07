@@ -12,7 +12,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : MonoBehaviour, IControlByAnimationSystem
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -145,6 +145,13 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+        }
+
+
+        public void SetControlByAnimationSystem(bool value)
+        {
+            if (value)
+                _animationController.StopAll();
         }
 
         private void Update()

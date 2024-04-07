@@ -113,9 +113,19 @@ public class AnimationController : MonoBehaviour, IAnimationController
         _animationStates[animType].Play();
     }
 
-    private void OnDestroy()
+    public void Stop(AnimType animType)
+    {
+        _animationStates[animType].Stop();
+    }
+
+    public void StopAll()
     {
         _animationStates.Values.ToList().ForEach(x => x.Stop());
+    }
+
+    private void OnDestroy()
+    {
+        StopAll();
     }
 }
 
@@ -126,5 +136,6 @@ public interface IAnimationController
     void Play(AnimType animType, Action complite, Action<float2> speed);
     void Play(AnimType animType, Action complite);
     void Play(AnimType animType);
-
+    void Stop(AnimType animType);
+    void StopAll();
 }

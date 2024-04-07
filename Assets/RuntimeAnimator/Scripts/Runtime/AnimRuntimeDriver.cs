@@ -7,6 +7,11 @@ using Unity.Mathematics;
 using UnityEngine;
 using static WeaponController;
 
+public interface IControlByAnimationSystem
+{
+    void SetControlByAnimationSystem(bool value);
+}
+
 public class AnimRuntimeDriver : MonoBehaviour, IAnimRuntimeDriver
 {
     [SerializeField]
@@ -88,6 +93,8 @@ public class AnimRuntimeDriver : MonoBehaviour, IAnimRuntimeDriver
         if (this.forseStop) return new TimeLineData();
 
         bool first = false;
+
+        Debug.Log($"SetAnimTime {timeValue}");
 
         TimeLineData timeLineData = new TimeLineData();
 
