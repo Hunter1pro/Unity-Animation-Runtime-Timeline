@@ -1,5 +1,4 @@
-﻿using Cinemachine;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +6,6 @@ public class OpenAnimArgs : EventArgs
 {
     public bool Open { get; set; }
 }
-
 
 public class UIControll : MonoBehaviour
 {
@@ -42,8 +40,6 @@ public class UIControll : MonoBehaviour
 
     private Transform player;
 
-    //private InputController inputController;
-
     private Vector3 lastAngle;
     private Vector2 lastPos;
 
@@ -57,16 +53,9 @@ public class UIControll : MonoBehaviour
 
     public event EventHandler<OpenAnimArgs> OpenAnimEvent;
 
-    public void Init(Transform player/*, InputController inputController*/)
+    public void Init(Transform player)
     {
         this.player = player;
-        //this.inputController = inputController;
-
-        //if (this.inputController)
-        //{
-        //    //this.inputController.SetLoock(true);
-        //    this.inputController.enabled = false;
-        //}
 
         this.startPos = this.player.transform.localPosition;
         this.startRotation = this.root.localRotation;
@@ -77,34 +66,7 @@ public class UIControll : MonoBehaviour
     {
         if (Input.GetKeyDown(this.enterAnimSetup) && Input.GetKey(this.secondKey))
         {
-            if (!this.playModeTimes)
-            {
-                this.camera.gameObject.SetActive(true);
-                if (this.fpsCamera)
-                    this.fpsCamera.gameObject.SetActive(false);
- 
-                this.playModeTimes = true;
-
-                //this.animSetupPanel.ForEach(x => x.SetActive(true));
-
-                this.OpenAnimEvent?.Invoke(this, new OpenAnimArgs { Open = true });
-            }
-            else
-            {
-                this.camera.gameObject.SetActive(false);
-                if (this.fpsCamera)
-                    this.fpsCamera.gameObject.SetActive(true);
-                //if (this.inputController)
-                //{
-                //    this.inputController.SetLoock(false);
-                //    this.inputController.enabled = true;
-                //}
-                this.playModeTimes = false;
-
-                this.OpenAnimEvent?.Invoke(this, new OpenAnimArgs { Open = false });
-
-                this.animSetupPanel.ForEach(x => x.SetActive(false));
-            }
+            EnterAnimSetup();
         }
 
         if (this.player == null) return;
@@ -176,6 +138,32 @@ public class UIControll : MonoBehaviour
             this.player.transform.localRotation = this.startRotation;
 
             this.camera.transform.localPosition = this.startCameraPos;
+        }
+    }
+
+    public void EnterAnimSetup()
+    {
+        if (!this.playModeTimes)
+        {
+            this.camera.gameObject.SetActive(true);
+            if (this.fpsCamera)
+                this.fpsCamera.gameObject.SetActive(false);
+
+            this.playModeTimes = true;
+
+            this.OpenAnimEvent?.Invoke(this, new OpenAnimArgs { Open = true });
+        }
+        else
+        {
+            this.camera.gameObject.SetActive(false);
+            if (this.fpsCamera)
+                this.fpsCamera.gameObject.SetActive(true);
+
+            this.playModeTimes = false;
+
+            this.OpenAnimEvent?.Invoke(this, new OpenAnimArgs { Open = false });
+
+            this.animSetupPanel.ForEach(x => x.SetActive(false));
         }
     }
 
